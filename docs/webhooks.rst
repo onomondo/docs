@@ -28,7 +28,7 @@ Sample of Location Update:
 
 .. code-block:: javascript
 
-  { "time":                  "2017-01-01 01:23:45",
+  { "time":                  "2018-01-01 01:23:45",
     "imsi":                  "238731234567890",
     "imei":                  "1234567890987654",
     "type":                  "cs",
@@ -42,7 +42,7 @@ Sample of CDR:
 
 .. code-block:: javascript
 
-  { "time":         "2017-01-01 01:23:45",
+  { "time":         "2018-01-01 01:23:45",
     "type":         "voice",
     "operation":    "finalize",
     "billid":       "1234567890-1234",
