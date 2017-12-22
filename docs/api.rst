@@ -23,7 +23,7 @@ Authentication
 
 HTTP requests to the API are protected with API key authentication.
 
-In short, you will use your API key in the Authorization header.
+In short, you will use your API key in the ``Authorization`` header.
 
 Sample Call in NodeJS Request:
 
