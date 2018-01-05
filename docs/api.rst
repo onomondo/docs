@@ -32,10 +32,9 @@ Sample Call in NodeJS Request:
   var request = require("request");
 
   var options = {
-    method: "GET",
-    url:    "/",
-    headers:
-      { Authorization: "YOUR-API-KEY" }
+    method:  "GET",
+    url:     "/",
+    headers: { Authorization: "YOUR-API-KEY" }
   };
 
   request(options, function (error, response, body) {
@@ -113,10 +112,9 @@ Retrieve SIM
     var request = require("request");
 
     var options = {
-      method: "GET",
-      url:    "/sim/4512345678",
-      headers:
-        { Authorization: "YOUR-API-KEY" }
+      method:  "GET",
+      url:     "/sim/4512345678",
+      headers: { Authorization: "YOUR-API-KEY" }
     };
 
     request(options, function (error, response, body) {
@@ -205,11 +203,10 @@ Create SIM
     var request = require("request");
 
     var options = {
-      method: "POST",
-      url:    "/sim/4512345678",
-      headers:
-        { Authorization:  "YOUR-API-KEY",
-          "content-type": "application/json" },
+      method:  "POST",
+      url:     "/sim/4512345678",
+      headers: { Authorization:  "YOUR-API-KEY",
+                 "content-type": "application/json" },
       form:
         { imsi:            "238731234567890",
           voice:           true,
@@ -303,11 +300,10 @@ Update SIM
     var request = require("request");
 
     var options = {
-      method: "PUT",
-      url:    "/sim/4512345678",
-      headers:
-        { Authorization:  "YOUR-API-KEY",
-          "content-type": "application/json" },
+      method:  "PUT",
+      url:     "/sim/4512345678",
+      headers: { Authorization:  "YOUR-API-KEY",
+                 "content-type": "application/json" },
       form:
         { imsi:            "238731234567890",
           voice:           true,
@@ -383,10 +379,9 @@ Delete SIM
     var request = require("request");
 
     var options = {
-      method: "DELETE",
-      url:    "/sim/4512345678",
-      headers:
-        { Authorization: "YOUR-API-KEY" }
+      method:  "DELETE",
+      url:     "/sim/4512345678",
+      headers: { Authorization: "YOUR-API-KEY" }
     };
 
     request(options, function (error, response, body) {
@@ -620,11 +615,10 @@ Send SMS
     var request = require("request");
 
     var options = {
-      method: "POST",
-      url:    "/sms/4512345678",
-      headers:
-        { Authorization:  "YOUR-API-KEY",
-          "content-type": "application/json" },
+      method:  "POST",
+      url:     "/sms/4512345678",
+      headers: { Authorization:  "YOUR-API-KEY",
+                 "content-type": "application/json" },
       form:
         { from: "Onomondo",
           text: "Hello, World!" }
