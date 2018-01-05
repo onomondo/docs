@@ -43,8 +43,11 @@ Sample Call in NodeJS Request:
     console.log(body);
   });
 
+SIM
+===
+
 Retrieve SIM
-============
+------------
 
 - Method
 
@@ -85,14 +88,12 @@ Retrieve SIM
   .. code-block:: javascript
 
     Code: 200
-    Content: { "imsi":          "238731234567890",
-               "msisdn":        "4512345678",
-               "cs":            true,
-               "ps":            true,
-               "eps":           true,
-               "cs_roaming":    true,
-               "ps_roaming":    true,
-               "ps_throttling": false }
+    Content: { "imsi":            "238731234567890",
+               "msisdn":          "4512345678",
+               "voice":           true,
+               "sms":             true,
+               "data":            true,
+               "data_throttling": false }
 
 - Error Codes
 
@@ -124,7 +125,7 @@ Retrieve SIM
     });
 
 Create SIM
-==========
+----------
 
 - Method
 
@@ -162,18 +163,16 @@ Create SIM
 
 - Data Params
 
-  ============= ============= ======= ================================================================
-  Parameter     Required      Default Description
-  ============= ============= ======= ================================================================
-  imsi          * (or msisdn)         15 digit IMSI of the SIM
-  msisdn        * (or imsi)           Phone number in international E.164 format
-  cs                          true    Boolean to enable/disable circuit switching (calls/SMS over GSM)
-  ps                          true    Boolean to enable/disable packet switching (data over GPRS/EDGE)
-  eps                         true    Boolean to enable/disable evolved packet system (data over LTE)
-  cs_roaming                  false   Boolean to enable/disable circuit switching roaming
-  ps_roaming                  false   Boolean to enable/disable packet switching roaming
-  ps_throttling               false   Boolean to enable/disable packet switching bandwidth throttling
-  ============= ============= ======= ================================================================
+  =============== ============= ======= ========================================================
+  Parameter       Required      Default Description
+  =============== ============= ======= ========================================================
+  imsi            * (or msisdn)         15 digit IMSI of the SIM
+  msisdn          * (or imsi)           Phone number in international E.164 format
+  voice                         true    Boolean to enable/disable voice (calls over GSM)
+  sms                           true    Boolean to enable/disable SMS (SMS over GSM)
+  data                          true    Boolean to enable/disable data (data over GPRS/EDGE/LTE)
+  data_throttling               false   Boolean to enable/disable data bandwidth throttling
+  =============== ============= ======= ========================================================
 
 - Success Response
 
@@ -184,22 +183,20 @@ Create SIM
 
 - Error Codes
 
-  ==== =========================
+  ==== =============================
   Code Error
-  ==== =========================
+  ==== =============================
   400  imsi_invalid
   400  msisdn_invalid
-  400  cs_invalid
-  400  ps_invalid
-  400  eps_invalid
-  400  cs_roaming_invalid
-  400  ps_roaming_invalid
-  400  ps_throttling_invalid
+  400  voice_invalid
+  400  sms_invalid
+  400  data_invalid
+  400  data_throttling_invalid
   403  imsi_forbidden
   404  imsi_not_found
   409  imsi_conflict
-  409  ps_ps_throttling_conflict
-  ==== =========================
+  409  data_data_throttling_conflict
+  ==== =============================
 
 - Sample Call in NodeJS Request
 
@@ -214,13 +211,11 @@ Create SIM
         { Authorization:  "YOUR-API-KEY",
           "content-type": "application/json" },
       form:
-        { imsi:          "238731234567890",
-          cs:            true,
-          ps:            true,
-          eps:           true,
-          cs_roaming:    true,
-          ps_roaming:    true,
-          ps_throttling: false }
+        { imsi:            "238731234567890",
+          voice:           true,
+          sms:             true,
+          data:            true,
+          data_throttling: false }
     };
 
     request(options, function (error, response, body) {
@@ -229,7 +224,7 @@ Create SIM
     });
 
 Update SIM
-==========
+----------
 
 - Method
 
@@ -267,18 +262,16 @@ Update SIM
 
 - Data Params
 
-  ============= ================================================================
-  Parameter     Description
-  ============= ================================================================
-  imsi          15 digit IMSI of the SIM
-  msisdn        Phone number in international E.164 format
-  cs            Boolean to enable/disable circuit switching (calls/SMS over GSM)
-  ps            Boolean to enable/disable packet switching (data over GPRS/EDGE)
-  eps           Boolean to enable/disable evolved packet system (data over LTE)
-  cs_roaming    Boolean to enable/disable circuit switching roaming
-  ps_roaming    Boolean to enable/disable packet switching roaming
-  ps_throttling Boolean to enable/disable packet switching bandwidth throttling
-  ============= ================================================================
+  =============== ========================================================
+  Parameter       Description
+  =============== ========================================================
+  imsi            15 digit IMSI of the SIM
+  msisdn          Phone number in international E.164 format
+  voice           Boolean to enable/disable voice (calls over GSM)
+  sms             Boolean to enable/disable SMS (SMS over GSM)
+  data            Boolean to enable/disable data (data over GPRS/EDGE/LTE)
+  data_throttling Boolean to enable/disable data bandwidth throttling
+  =============== ========================================================
 
 - Success Response
 
@@ -289,21 +282,19 @@ Update SIM
 
 - Error Codes
 
-  ==== =========================
+  ==== =============================
   Code Error
-  ==== =========================
+  ==== =============================
   400  imsi_invalid
   400  msisdn_invalid
-  400  cs_invalid
-  400  ps_invalid
-  400  eps_invalid
-  400  cs_roaming_invalid
-  400  ps_roaming_invalid
-  400  ps_throttling_invalid
+  400  voice_invalid
+  400  sms_invalid
+  400  data_invalid
+  400  data_throttling_invalid
   403  imsi_forbidden
   404  sim_not_found
-  409  ps_ps_throttling_conflict
-  ==== =========================
+  409  data_data_throttling_conflict
+  ==== =============================
 
 - Sample Call in NodeJS Request
 
@@ -318,13 +309,11 @@ Update SIM
         { Authorization:  "YOUR-API-KEY",
           "content-type": "application/json" },
       form:
-        { imsi:          "238731234567890",
-          cs:            true,
-          ps:            true,
-          eps:           true,
-          cs_roaming:    true,
-          ps_roaming:    true,
-          ps_throttling: false }
+        { imsi:            "238731234567890",
+          voice:           true,
+          sms:             true,
+          data:            true,
+          data_throttling: false }
     };
 
     request(options, function (error, response, body) {
@@ -333,7 +322,7 @@ Update SIM
     });
 
 Delete SIM
-==========
+----------
 
 - Method
 
@@ -405,8 +394,178 @@ Delete SIM
       console.log(body);
     });
 
+Connector
+=========
+
+Retrieve Connector
+------------------
+
+- Method
+
+  ::
+
+    GET
+
+- URL
+
+  ::
+
+    /connector/:id
+
+- URL Params
+
+  ========= ===================
+  Parameter Description
+  ========= ===================
+  id        ID of the Connector
+  ========= ===================
+
+- Success Response
+
+  .. code-block:: javascript
+
+    TODO
+
+- Error Codes
+
+    TODO
+
+- Sample Call in NodeJS Request
+
+  .. code-block:: javascript
+
+    TODO
+
+Create Connector
+----------------
+
+- Method
+
+  ::
+
+    POST
+
+- URL
+
+  ::
+
+    /connector/:id
+
+- URL Params
+
+  ========= ===================
+  Parameter Description
+  ========= ===================
+  id        ID of the Connector
+  ========= ===================
+
+- Data Params
+
+  TODO
+
+- Success Response
+
+  .. code-block:: javascript
+
+    TODO
+
+- Error Codes
+
+    TODO
+
+- Sample Call in NodeJS Request
+
+  .. code-block:: javascript
+
+    TODO
+
+Update Connector
+----------------
+
+- Method
+
+  ::
+
+    PUT
+
+- URL
+
+  ::
+
+    /connector/:id
+
+- URL Params
+
+  ========= ===================
+  Parameter Description
+  ========= ===================
+  id        ID of the Connector
+  ========= ===================
+
+- Data Params
+
+  TODO
+
+- Success Response
+
+  .. code-block:: javascript
+
+    TODO
+
+- Error Codes
+
+    TODO
+
+- Sample Call in NodeJS Request
+
+  .. code-block:: javascript
+
+    TODO
+
+Delete Connector
+----------------
+
+- Method
+
+  ::
+
+    DELETE
+
+- URL
+
+  ::
+
+    /connector/:id
+
+- URL Params
+
+  ========= ===================
+  Parameter Description
+  ========= ===================
+  id        ID of the Connector
+  ========= ===================
+
+- Success Response
+
+  .. code-block:: javascript
+
+    TODO
+
+- Error Codes
+
+    TODO
+
+- Sample Call in NodeJS Request
+
+  .. code-block:: javascript
+
+    TODO
+
+SMS
+===
+
 Send SMS
-========
+--------
 
 - Method
 
@@ -468,7 +627,7 @@ Send SMS
           "content-type": "application/json" },
       form:
         { from: "Onomondo",
-          text: "Hello World" }
+          text: "Hello, World!" }
     };
 
     request(options, function (error, response, body) {
