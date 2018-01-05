@@ -21,20 +21,6 @@ The webhooks authenticate against the endpoints using API key authentication:
 
 The webhooks is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.
 
-Country Change
-==============
-
-Sample of Country Change:
-
-.. code-block:: javascript
-
-  { "time":                  "2018-01-01 01:23:45",
-    "imsi":                  "238731234567890",
-    "imei":                  "1234567890987654",
-    "type":                  "cs",
-    "country_code":          "dk",
-    "country_code_previous": "de" }
-
 XDR
 ===
 
@@ -84,6 +70,34 @@ Sample of Data Data Record (yes, we know it's a pleonasm):
     "upload":       "0",
     "imsi":         "238731234567890",
     "country_code": "dk" }
+
+Country Change Approval
+=======================
+
+Sample of Country Change:
+
+.. code-block:: javascript
+
+  { "time":                  "2018-01-01 01:23:45",
+    "imsi":                  "238731234567890",
+    "imei":                  "1234567890987654",
+    "type":                  "GSM",
+    "country_code":          "dk",
+    "country_code_previous": "de" }
+
+Country Change
+==============
+
+Sample of Country Change:
+
+.. code-block:: javascript
+
+  { "time":                  "2018-01-01 01:23:45",
+    "imsi":                  "238731234567890",
+    "imei":                  "1234567890987654",
+    "type":                  "GSM",
+    "country_code":          "dk",
+    "country_code_previous": "de" }
 
 Receive SMS
 ===========
