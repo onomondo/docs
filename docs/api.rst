@@ -58,52 +58,34 @@ Retrieve SIM
 
   ::
 
-    /sim/:imsi
+    /sim
 
-  OR
+- Data Params
 
-  ::
-
-    /sim/:msisdn
-
-- URL Params
-
-  ========= ========================
-  Parameter Description
-  ========= ========================
-  imsi      15 digit IMSI of the SIM
-  ========= ========================
-
-  OR
-
-  ========= ==========================================
-  Parameter Description
-  ========= ==========================================
-  msisdn    Phone number in international E.164 format
-  ========= ==========================================
+  ========= ======== =====================
+  Parameter Required Default Description
+  ========= ======== =====================
+  id        *        9 digit ID of the SIM
+  ========= ======== =====================
 
 - Success Response
 
   .. code-block:: javascript
 
     Code: 200
-    Content: { "imsi":            "238731234567890",
-               "msisdn":          "4512345678",
-               "voice":           true,
-               "sms":             true,
-               "data":            true,
-               "data_throttling": false }
+    Content: { "id":     "192837465",
+               "alias":  "4512345678",
+               "active": true }
 
 - Error Codes
 
-  ==== ==============
+  ==== =============
   Code Error
-  ==== ==============
-  400  imsi_invalid
-  400  msisdn_invalid
-  403  imsi_forbidden
+  ==== =============
+  400  id_invalid
+  403  id_forbidden
   404  sim_not_found
-  ==== ==============
+  ==== =============
 
 - Sample Call in NodeJS Request
 
@@ -113,8 +95,10 @@ Retrieve SIM
 
     var options = {
       method:  "GET",
-      url:     "/sim/4512345678",
-      headers: { Authorization: "YOUR-API-KEY" }
+      url:     "/sim",
+      headers: { Authorization:  "YOUR-API-KEY",
+                 "content-type": "application/json" },
+      json:    { id: "192837465" }
     };
 
     request(options, function (error, response, body) {
@@ -135,42 +119,17 @@ Create SIM
 
   ::
 
-    /sim/:imsi
-
-  OR
-
-  ::
-
-    /sim/:msisdn
-
-- URL Params
-
-  ========= ========================
-  Parameter Description
-  ========= ========================
-  imsi      15 digit IMSI of the SIM
-  ========= ========================
-
-  OR
-
-  ========= ==========================================
-  Parameter Description
-  ========= ==========================================
-  msisdn    Phone number in international E.164 format
-  ========= ==========================================
+    /sim
 
 - Data Params
 
-  =============== ============= ======= ========================================================
-  Parameter       Required      Default Description
-  =============== ============= ======= ========================================================
-  imsi            * (or msisdn)         15 digit IMSI of the SIM
-  msisdn          * (or imsi)           Phone number in international E.164 format
-  voice                         true    Boolean to enable/disable voice (calls over GSM)
-  sms                           true    Boolean to enable/disable SMS (SMS over GSM)
-  data                          true    Boolean to enable/disable data (data over GPRS/EDGE/LTE)
-  data_throttling               false   Boolean to enable/disable data bandwidth throttling
-  =============== ============= ======= ========================================================
+  ========= ======== ======= =====================
+  Parameter Required Default Description
+  ========= ======== ======= =====================
+  id        *                9 digit ID of the SIM
+  alias                      TODO
+  active             true    TODO
+  ========= ======== ======= =====================
 
 - Success Response
 
@@ -181,20 +140,15 @@ Create SIM
 
 - Error Codes
 
-  ==== =============================
+  ==== ==============
   Code Error
-  ==== =============================
-  400  imsi_invalid
-  400  msisdn_invalid
-  400  voice_invalid
-  400  sms_invalid
-  400  data_invalid
-  400  data_throttling_invalid
-  403  imsi_forbidden
-  404  imsi_not_found
-  409  imsi_conflict
-  409  data_data_throttling_conflict
-  ==== =============================
+  ==== ==============
+  400  id_invalid
+  400  alias_invalid
+  400  active_invalid
+  403  id_forbidden
+  409  alias_conflict
+  ==== ==============
 
 - Sample Call in NodeJS Request
 
@@ -204,15 +158,12 @@ Create SIM
 
     var options = {
       method:  "POST",
-      url:     "/sim/4512345678",
+      url:     "/sim",
       headers: { Authorization:  "YOUR-API-KEY",
                  "content-type": "application/json" },
-      form:
-        { imsi:            "238731234567890",
-          voice:           true,
-          sms:             true,
-          data:            true,
-          data_throttling: false }
+      json:    { id:     "192837465",
+                 alias:  "My-Lego-Drone01",
+                 active: true }
     };
 
     request(options, function (error, response, body) {
@@ -233,42 +184,17 @@ Update SIM
 
   ::
 
-    /sim/:imsi
-
-  OR
-
-  ::
-
-    /sim/:msisdn
-
-- URL Params
-
-  ========= ========================
-  Parameter Description
-  ========= ========================
-  imsi      15 digit IMSI of the SIM
-  ========= ========================
-
-  OR
-
-  ========= ==========================================
-  Parameter Description
-  ========= ==========================================
-  msisdn    Phone number in international E.164 format
-  ========= ==========================================
+    /sim
 
 - Data Params
 
-  =============== ========================================================
-  Parameter       Description
-  =============== ========================================================
-  imsi            15 digit IMSI of the SIM
-  msisdn          Phone number in international E.164 format
-  voice           Boolean to enable/disable voice (calls over GSM)
-  sms             Boolean to enable/disable SMS (SMS over GSM)
-  data            Boolean to enable/disable data (data over GPRS/EDGE/LTE)
-  data_throttling Boolean to enable/disable data bandwidth throttling
-  =============== ========================================================
+  ========= ======== ======= =====================
+  Parameter Required Default Description
+  ========= ======== ======= =====================
+  id        *                9 digit ID of the SIM
+  alias                      TODO
+  active             true    TODO
+  ========= ======== ======= =====================
 
 - Success Response
 
@@ -279,19 +205,16 @@ Update SIM
 
 - Error Codes
 
-  ==== =============================
+  ==== ==============
   Code Error
-  ==== =============================
-  400  imsi_invalid
-  400  msisdn_invalid
-  400  voice_invalid
-  400  sms_invalid
-  400  data_invalid
-  400  data_throttling_invalid
-  403  imsi_forbidden
+  ==== ==============
+  400  id_invalid
+  400  alias_invalid
+  400  active_invalid
+  403  id_forbidden
   404  sim_not_found
-  409  data_data_throttling_conflict
-  ==== =============================
+  409  alias_conflict
+  ==== ==============
 
 - Sample Call in NodeJS Request
 
@@ -301,15 +224,12 @@ Update SIM
 
     var options = {
       method:  "PUT",
-      url:     "/sim/4512345678",
+      url:     "/sim",
       headers: { Authorization:  "YOUR-API-KEY",
                  "content-type": "application/json" },
-      form:
-        { imsi:            "238731234567890",
-          voice:           true,
-          sms:             true,
-          data:            true,
-          data_throttling: false }
+      json:    { id:     "192837465",
+                 alias:  "My-Lego-Drone01",
+                 active: false }
     };
 
     request(options, function (error, response, body) {
@@ -330,29 +250,15 @@ Delete SIM
 
   ::
 
-    /sim/:imsi
+    /sim
 
-  OR
+- Data Params
 
-  ::
-
-    /sim/:msisdn
-
-- URL Params
-
-  ========= ========================
-  Parameter Description
-  ========= ========================
-  imsi      15 digit IMSI of the SIM
-  ========= ========================
-
-  OR
-
-  ========= ==========================================
-  Parameter Description
-  ========= ==========================================
-  msisdn    Phone number in international E.164 format
-  ========= ==========================================
+  ========= ======== ======= =====================
+  Parameter Required Default Description
+  ========= ======== ======= =====================
+  id        *                9 digit ID of the SIM
+  ========= ======== ======= =====================
 
 - Success Response
 
@@ -363,14 +269,13 @@ Delete SIM
 
 - Error Codes
 
-  ==== ==============
+  ==== =============
   Code Error
-  ==== ==============
-  400  imsi_invalid
-  400  msisdn_invalid
-  403  imsi_forbidden
+  ==== =============
+  400  id_invalid
+  403  id_forbidden
   404  sim_not_found
-  ==== ==============
+  ==== =============
 
 - Sample Call in NodeJS Request
 
@@ -380,8 +285,10 @@ Delete SIM
 
     var options = {
       method:  "DELETE",
-      url:     "/sim/4512345678",
-      headers: { Authorization: "YOUR-API-KEY" }
+      url:     "/sim",
+      headers: { Authorization:  "YOUR-API-KEY",
+                 "content-type": "application/json" },
+      json:    { id: "192837465" }
     };
 
     request(options, function (error, response, body) {
@@ -405,9 +312,9 @@ Retrieve Connector
 
   ::
 
-    /connector/:id
+    /connector
 
-- URL Params
+- Data Params
 
   ========= ===================
   Parameter Description
@@ -444,9 +351,9 @@ Create Connector
 
   ::
 
-    /connector/:id
+    /connector
 
-- URL Params
+- Data Params
 
   ========= ===================
   Parameter Description
@@ -487,9 +394,9 @@ Update Connector
 
   ::
 
-    /connector/:id
+    /connector
 
-- URL Params
+- Data Params
 
   ========= ===================
   Parameter Description
@@ -530,9 +437,9 @@ Delete Connector
 
   ::
 
-    /connector/:id
+    /connector
 
-- URL Params
+- Data Params
 
   ========= ===================
   Parameter Description
@@ -555,76 +462,3 @@ Delete Connector
   .. code-block:: javascript
 
     TODO
-
-SMS
-===
-
-Send SMS
---------
-
-- Method
-
-  ::
-
-    POST
-
-- URL
-
-  ::
-
-    /sms/:to
-
-- URL Params
-
-  ========= ==========================================
-  Parameter Description
-  ========= ==========================================
-  to        Phone number in international E.164 format
-  ========= ==========================================
-
-- Data Params
-
-  ========= ======================
-  Parameter Description
-  ========= ======================
-  from      An alphanumeric string
-  text      Text in UTF-8 encoding
-  ========= ======================
-
-- Success Response
-
-  .. code-block:: javascript
-
-    Code: 200
-    Content: { "message": "OK" }
-
-- Error Codes
-
-  ==== ============
-  Code Error
-  ==== ============
-  400  to_invalid
-  400  from_invalid
-  400  text_invalid
-  ==== ============
-
-- Sample Call in NodeJS Request
-
-  .. code-block:: javascript
-
-    var request = require("request");
-
-    var options = {
-      method:  "POST",
-      url:     "/sms/4512345678",
-      headers: { Authorization:  "YOUR-API-KEY",
-                 "content-type": "application/json" },
-      form:
-        { from: "Onomondo",
-          text: "Hello, World!" }
-    };
-
-    request(options, function (error, response, body) {
-      if (error) throw new Error(error);
-      console.log(body);
-    });

@@ -8,4 +8,3 @@ Onomondo Docs
    authentication
    api
    webhooks
-   sip
