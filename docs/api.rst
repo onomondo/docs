@@ -96,8 +96,7 @@ Retrieve SIM
     var options = {
       method:  "GET",
       url:     "/sim",
-      headers: { Authorization:  "YOUR-API-KEY",
-                 "content-type": "application/json" },
+      headers: { Authorization:  "YOUR-API-KEY" },
       json:    { id: "192837465" }
     };
 
@@ -159,8 +158,7 @@ Create SIM
     var options = {
       method:  "POST",
       url:     "/sim",
-      headers: { Authorization:  "YOUR-API-KEY",
-                 "content-type": "application/json" },
+      headers: { Authorization:  "YOUR-API-KEY" },
       json:    { id:     "192837465",
                  alias:  "My-Lego-Drone01",
                  active: true }
@@ -225,8 +223,7 @@ Update SIM
     var options = {
       method:  "PUT",
       url:     "/sim",
-      headers: { Authorization:  "YOUR-API-KEY",
-                 "content-type": "application/json" },
+      headers: { Authorization:  "YOUR-API-KEY" },
       json:    { id:     "192837465",
                  alias:  "My-Lego-Drone01",
                  active: false }
@@ -286,8 +283,7 @@ Delete SIM
     var options = {
       method:  "DELETE",
       url:     "/sim",
-      headers: { Authorization:  "YOUR-API-KEY",
-                 "content-type": "application/json" },
+      headers: { Authorization:  "YOUR-API-KEY" },
       json:    { id: "192837465" }
     };
 
