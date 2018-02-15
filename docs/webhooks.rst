@@ -43,10 +43,10 @@ Sample of Network Validation:
 
 .. code-block:: javascript
 
-  { "time":                  "2018-01-01 01:23:45",
-    "sim_id":                "192837465",
-    "imei":                  "1234567890987654",
-    "country_code":          "dk" }
+  { "time":         "2018-01-01 01:23:45",
+    "sim_id":       "192837465",
+    "imei":         "1234567890987654",
+    "country_code": "dk" }
 
 Network Registration
 ====================
