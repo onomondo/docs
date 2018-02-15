@@ -458,3 +458,55 @@ Delete Connector
   .. code-block:: javascript
 
     TODO
+
+Usage
+=====
+
+Retrieve Usage
+--------------
+
+- Method
+
+  ::
+
+    GET
+
+- URL
+
+  ::
+
+    /usage
+
+- Data Params
+
+  ========== ======== =====================
+  Parameter  Required Default Description
+  ========== ======== =====================
+  sim_id              9 digit ID of the SIM
+  time_begin          TODO
+  time_end            TODO
+  ========== ======== =====================
+
+- Success Response
+
+  .. code-block:: javascript
+
+    TODO
+
+- Error Codes
+
+  ==== ==================
+  Code Error
+  ==== ==================
+  400  sim_id_invalid
+  400  time_begin_invalid
+  400  time_begin_invalid
+  403  sim_id_forbidden
+  404  sim_id_not_found
+  ==== ==================
+
+- Sample Call in NodeJS Request
+
+  .. code-block:: javascript
+
+    TODO

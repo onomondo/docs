@@ -14,17 +14,17 @@ The webhooks authenticate against the endpoints using API key authentication:
 
 .. code-block:: javascript
 
-  POST /xdr
+  POST /usage
   Host: www.example.com
   Content-Type: application/json
   Authorization: OUR-API-KEY
 
 The webhooks is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.
 
-XDR
-===
+Usage
+=====
 
-Sample of Data Data Record (yes, we know it's a pleonasm):
+Sample of Usage:
 
 .. code-block:: javascript
 
@@ -36,24 +36,22 @@ Sample of Data Data Record (yes, we know it's a pleonasm):
     "upload":       "0",
     "download":     "0" }
 
-Country Change Approval
-=======================
+Network Validation
+==================
 
-Sample of Country Change:
+Sample of Network Validation:
 
 .. code-block:: javascript
 
   { "time":                  "2018-01-01 01:23:45",
     "sim_id":                "192837465",
     "imei":                  "1234567890987654",
-    "type":                  "GSM",
-    "country_code":          "dk",
-    "country_code_previous": "de" }
+    "country_code":          "dk" }
 
-Country Change
-==============
+Network Registration
+====================
 
-Sample of Country Change:
+Sample of Network Registration:
 
 .. code-block:: javascript
 
